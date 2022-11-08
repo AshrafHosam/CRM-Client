@@ -19,11 +19,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='let product of productsResponse'>
-            <td>{{product.Id}}</td>
-            <td>{{ product.Name | lowercase  }}</td>
-            <td>{{product.Description | uppercase}}</td>
-            <td>{{ product.Price | currency:'USD':'symbol':'1.2-2'}}</td>
+          <tr *ngFor='let product of products'>
+            <td>{{product.id}}</td>
+            <td>{{ product.name | lowercase  }}</td>
+            <td>{{product.description | uppercase}}</td>
+            <td>{{ product.price | currency:'USD':'symbol':'1.2-2'}}</td>
           </tr>
         </tbody>
       </table>

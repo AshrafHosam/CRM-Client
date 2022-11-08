@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
 
   filterData(value: string): IProduct[] {
     value = value.toLowerCase();
-    return this.products.filter((product: IProduct) => product.Name.toLocaleLowerCase().includes(value));
+    return this.products.filter((product: IProduct) => product.name.toLocaleLowerCase().includes(value));
   }
   toggleImage(): void {
     this.showImage = !this.showImage;
@@ -38,12 +38,13 @@ export class ProductListComponent implements OnInit {
 
   filteredProducts: IProduct[] = [];
   products: IProduct[] = [];
-  productsResponse: any;
   ngOnInit(): void {
     // this._listFilter='cart';
     console.log("Hey there, We're in On Init");
-    //this.products = this._productService.getProducts();
-    this.productsResponse = this._productService.getAPIReslt();
+    this._productService.getAPIReslt().subscribe((a) => {
+      this.products = a['data']
+      console.log(this.products);
+    });
   }
 
   onRatingClicked(message: string): void {

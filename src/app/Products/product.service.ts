@@ -18,13 +18,14 @@ export class ProductService {
 
   }
 
-  getAPIReslt(): any {
-    this.http.get<any>(this.URL).pipe(
-      tap(),
-      catchError(this.handleError)
-    ).subscribe(a => this.response = a);
-    console.log(this.response);
-    return this.response;
+  getAPIReslt() {
+    //this.http.get<any>(this.URL).pipe(
+    //  tap(),
+    //  catchError(this.handleError)
+    //).subscribe(a => this.response = a['data']);
+    //console.log(this.response);
+    //return this.response;
+    return this.http.get<any>('https://localhost:7238/Product/GetProducts');
   }
 
 
@@ -35,10 +36,10 @@ export class ProductService {
   getProducts(): IProduct[] {
     return [
       {
-        "Id": 1,
-        "Name": "Leaf Rake",
-        "Description": "Leaf rake with 48-inch wooden handle.",
-        "Price": 19.95,
+        "id": 1,
+        "name": "Leaf Rake",
+        "description": "Leaf rake with 48-inch wooden handle.",
+        "price": 19.95,
       }
     ];
   }
